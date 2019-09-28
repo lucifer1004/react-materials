@@ -1,6 +1,6 @@
 {
   "name": "@icedesign/container",
-  "version": "1.0.4",
+  "version": "0.1.10",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -9,13 +9,13 @@
     "build/"
   ],
   "scripts": {
-    "start": "../../node_modules/.bin/ice-scripts dev --config ../../ice.component.config.js",
-    "build": "../../node_modules/.bin/ice-scripts build --config ../../ice.component.config.js",
+    "start": "ice dev",
+    "build": "ice build",
     "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ice-lab/react-materials/tree/master/components/container"
+    "url": "https://github.com/ice-lab/react-materials/tree/stable/components-0.x/components/container"
   },
   "license": "MIT",
   "keywords": [
@@ -26,16 +26,18 @@
     "react": "^16.5.0"
   },
   "dependencies": {
-    "@alifd/next": "^1.x",
+    "@icedesign/base": "^0.2.0",
     "prop-types": "^15.5.8"
   },
+  "typings": "lib/index.d.ts",
   "devDependencies": {
     "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "ice-scripts": "^1.10.1"
   },
   "componentConfig": {
     "name": "container",
-    "title": "基础容器"
+    "title": ""
   },
-  "homepage": "https://unpkg.com/@icedesign/container@1.0.4/build/index.html"
+  "homepage": "https://unpkg.com/@icedesign/container@0.1.10/build/index.html"
 }

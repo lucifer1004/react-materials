@@ -35,9 +35,6 @@ export default class Contain extends Component {
       onError,
       shape,
       enableAliCDNSuffix,
-      errorImgSrc,
-      type,
-      ...others
     } = this.props;
 
     const styles = {
@@ -70,7 +67,7 @@ export default class Contain extends Component {
     const cls = classnames('ice-img', shape, className);
 
     return (
-      <div className={cls} style={styles} {...others}>
+      <div className={cls} style={styles}>
         <div style={centerStyles}>
           <img
             style={imgStyles}

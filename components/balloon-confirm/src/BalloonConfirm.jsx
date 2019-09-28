@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Balloon, Button, Icon } from '@alifd/next';
+import { Balloon, Button, Icon } from '@icedesign/base';
 import PropTypes from 'prop-types';
 
 export default class BalloonConfirm extends Component {
@@ -53,54 +53,44 @@ export default class BalloonConfirm extends Component {
     ),
   };
 
-  constructor(props) {
-    super(props);
+  confirmRef = null;
 
-    this.confirmRef = React.createRef();
-  }
-
-  handleCanel = e => {
-    const { onCancel } = this.props;
-    onCancel(e);
-    this.closeBallon();
+  initConfirmRef = (ref) => {
+    if (ref) {
+      this.confirmRef = ref;
+    }
   };
 
-  handleOk = e => {
-    const { onConfirm } = this.props;
-    onConfirm(e);
-    this.closeBallon();
+  handleCanel = (e) => {
+    this.props.onCancel(e);
+    this.confirmRef.setState({
+      visible: false,
+    });
   };
 
-  closeBallon = () => {
-    this.confirmRef.current.getInstance().setState({
+  handleOk = (e) => {
+    this.props.onConfirm(e);
+    this.confirmRef.setState({
       visible: false,
     });
   };
 
   render() {
-    const {
-      children,
-      className,
-      title,
-      confirmText,
-      cancelText,
-      Icon: IconComponent,
-      onConfirm,
-      onCancel,
-      ...others
-    } = this.props;
+    const { children, className, title, confirmText, cancelText } = this.props;
 
     return (
       <Balloon
         triggerType="click"
         closable={false}
-        {...others}
+        {...this.props}
         className={`ice-ballon-confirm${className ? ` ${className}` : ''}`}
         trigger={children}
-        ref={this.confirmRef}
+        ref={(ref) => {
+          this.initConfirmRef(ref);
+        }}
       >
         <div className="ice-ballon-confirm-title">
-          {IconComponent}
+          {this.props.Icon}
           {title}
         </div>
         <div className="ice-ballon-confirm-btn-group">

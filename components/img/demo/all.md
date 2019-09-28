@@ -9,7 +9,9 @@ importStyle: true
 ````jsx
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Table} from '@alifd/next';
+import {
+  Table,
+} from '@icedesign/base';
 import Img from '@icedesign/img';
 
 

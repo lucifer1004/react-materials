@@ -2,7 +2,7 @@
 
 import React from 'react';
 import RCNotification from 'rc-notification';
-import { Icon } from '@alifd/next';
+import { Icon } from '@icedesign/base';
 
 /**
  * List容器组件

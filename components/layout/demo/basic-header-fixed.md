@@ -6,7 +6,7 @@ width: 960
 importStyle: true
 ---
 
-Header 固定（吸顶），其他区域滚动。
+Header Aside Footer 固定位置布局。
 
 ````jsx
 import React, { Component } from 'react';
@@ -17,18 +17,13 @@ class App extends Component {
   render() {
     return (
       <Layout fixable={true}>
-        <Layout.Header style={{
-          height: 80,
-        }} type="primary">Header</Layout.Header>
+        <Layout.Header>&nbsp;&nbsp;&nbsp;&nbsp;Header</Layout.Header>
         <Layout.Section scrollable={true}>
-          <Layout.Aside style={{
-            width: 200,
-          }} type="primary">
+          <Layout.Aside>
             <br />
             Aside
           </Layout.Aside>
           <Layout.Main>
-            <p>Main</p>
             <p style={{ height: 200 }}>内容可滚动</p>
             <p style={{ height: 200 }}>内容可滚动</p>
             <p style={{ height: 200 }}>内容可滚动</p>
@@ -46,4 +41,27 @@ class App extends Component {
 }
 
 ReactDOM.render(<App />, mountNode);
+````
+
+````css
+.ice-layout {
+  color: #fff;
+  text-align: center;
+  background-color: #eee;
+}
+.ice-layout-header {
+  line-height: 50px;
+  background-color: #84B0E7 !important;;
+}
+.ice-layout-aside {
+  background-color: rgba(27, 115, 225, 0.7) !important;;
+}
+.ice-layout-main {
+  line-height: 120px;
+  background-color: rgba(27, 115, 225, 1);
+}
+.ice-layout-footer {
+  line-height: 50px;
+  background-color: #84B0E7;
+}
 ````

@@ -1,6 +1,6 @@
 {
   "name": "@icedesign/panel",
-  "version": "1.0.4",
+  "version": "0.1.9",
   "description": "面板组件",
   "main": "lib/index.js",
   "files": [
@@ -9,13 +9,13 @@
     "build/"
   ],
   "scripts": {
-    "start": "../../node_modules/.bin/ice-scripts dev --config ../../ice.component.config.js",
-    "build": "../../node_modules/.bin/ice-scripts build --config ../../ice.component.config.js",
+    "start": "ice dev",
+    "build": "ice build",
     "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ice-lab/react-materials/tree/master/components/panel"
+    "url": "https://github.com/ice-lab/react-materials/tree/stable/components-0.x/components/panel"
   },
   "license": "MIT",
   "keywords": [
@@ -25,11 +25,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "prop-types": "^15.6.0",
-    "@alifd/next": "^1.x"
-  },
-  "devDependencies": {
-    "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "@icedesign/base": "^0.2.0"
   },
   "peerDependencies": {
     "react": "^16.5.0",
@@ -39,5 +35,10 @@
     "name": "panel",
     "title": "面板组件"
   },
-  "homepage": "https://unpkg.com/@icedesign/panel@1.0.3/build/index.html"
+  "devDependencies": {
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "ice-scripts": "^1.10.1"
+  },
+  "homepage": "https://unpkg.com/@icedesign/panel@0.1.9/build/index.html"
 }

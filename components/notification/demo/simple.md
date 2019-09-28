@@ -10,7 +10,7 @@ importStyle: true
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import IceNotification from '@icedesign/notification';
-import { Button, Icon, Select } from '@alifd/next';
+import { Button, Icon, Select } from '@icedesign/base';
 
 class App extends Component {
   state = {};
@@ -117,9 +117,9 @@ class App extends Component {
             }}
           >
             {['topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((val) => (
-              <Select.Option key={val} value={val}>
+              <Option key={val} value={val}>
                 {val}
-              </Select.Option>
+              </Option>
             ))}
           </Select>
           <Button type="primary" onClick={this.placement}>

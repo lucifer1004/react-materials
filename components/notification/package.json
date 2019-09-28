@@ -1,6 +1,6 @@
 {
   "name": "@icedesign/notification",
-  "version": "1.0.5",
+  "version": "0.2.4",
   "description": "全局展示通知提醒信息。",
   "main": "lib/index.js",
   "files": [
@@ -10,34 +10,32 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ice-lab/react-materials/tree/master/components/notification"
-  },
-  "publishConfig": {
-    "access": "public"
+    "url": "https://github.com/ice-lab/react-materials/tree/stable/components-0.x/components/notification"
   },
   "keywords": [
     "ice",
     "ice-component"
   ],
   "scripts": {
-    "start": "../../node_modules/.bin/ice-scripts dev --config ../../ice.component.config.js",
-    "build": "../../node_modules/.bin/ice-scripts build --config ../../ice.component.config.js",
+    "start": "ice dev",
+    "build": "ice build",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
     "react": "^16.5.0"
   },
   "dependencies": {
-    "@alifd/next": "^1.x",
+    "@icedesign/base": "^0.2.5",
     "rc-notification": "^1.4.2"
   },
   "devDependencies": {
     "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "ice-scripts": "^1.10.1"
   },
   "componentConfig": {
     "name": "notification",
-    "title": "全局展示通知提醒信息"
+    "title": "全局展示通知提醒信息。"
   },
-  "homepage": "https://unpkg.com/@icedesign/notification@latest/build/index.html"
+  "homepage": "https://unpkg.com/@icedesign/notification@0.2.4/build/index.html"
 }

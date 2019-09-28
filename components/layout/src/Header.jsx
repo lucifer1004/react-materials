@@ -7,32 +7,51 @@ export default class IceLayoutHeader extends Component {
 
   static propTypes = {
     /**
-     * 类型，背景色
+     * 主题
      */
-    type: PropTypes.oneOf(['none', 'normal', 'primary', 'secondary', 'line']),
+    theme: PropTypes.oneOf(['dark', 'light']),
+    /**
+     * 子元素垂直对齐方式
+     */
+    alignItems: PropTypes.oneOf([
+      'flex-start',
+      'flex-end',
+      'center',
+      'baseline',
+      'stretch',
+    ]),
   };
 
   static defaultProps = {
-    type: 'normal',
+    theme: 'light',
+    alignItems: 'center',
   };
 
   render() {
     const {
-      type,
+      alignItems,
       style,
       className,
       children,
+      theme,
       ...others
     } = this.props;
 
     const classes = classNames(
       'ice-layout-header',
-      `ice-layout-header-${type}`,
+      {
+        [`ice-layout-theme-${theme}`]: theme,
+      },
       className
     );
 
+    const divStyle = {
+      ...style,
+      alignItems,
+    };
+
     return (
-      <div {...others} className={classes} style={style}>
+      <div {...others} className={classes} style={divStyle}>
         {children}
       </div>
     );

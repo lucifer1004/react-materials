@@ -1,9 +1,11 @@
 /* eslint-disable no-underscore-dangle, no-nested-ternary */
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Message } from '@alifd/next';
+import { Feedback } from '@icedesign/base';
 import pureRender from 'pure-render-decorator';
 import merge from 'deepmerge';
+
+const Toast = Feedback.toast;
 
 /**
  * 初始化对象的加载状态，错误状态等，并且该值不能枚举
@@ -116,7 +118,10 @@ export default function dataBinder(sourceConfig, opts = {}) {
         initializeRequestStatus(originDatas[dataSourceKey], requestStatus);
         const tmpObj = {};
         if (newData) {
-          if (Array.isArray(originDatas[dataSourceKey])) {
+          if (
+            Object.prototype.toString.call(originDatas[dataSourceKey]) ===
+            '[object Array]'
+          ) {
             tmpObj[dataSourceKey] = initializeRequestStatus(
               newData,
               requestStatus
@@ -126,7 +131,7 @@ export default function dataBinder(sourceConfig, opts = {}) {
             tmpObj[dataSourceKey] = initializeRequestStatus({
               ...originDatas[dataSourceKey],
               ...newData,
-            }, requestStatus);
+            });
           }
         }
         this.setState({
@@ -189,7 +194,7 @@ export default function dataBinder(sourceConfig, opts = {}) {
         const customSuccess = newRequestOptions.success;
         const customError = newRequestOptions.error;
         const defaultErrorCallback = () => {
-          Message.error('网络问题，请稍后重试！');
+          Toast.error('网络问题，请稍后重试！');
         };
 
         opts.requestClient({
@@ -200,13 +205,13 @@ export default function dataBinder(sourceConfig, opts = {}) {
           .catch((err) => {
             // eslint-disable-next-line
             const __error = {
-              message: err.message || '网络问题，请稍后重试！',
+              message: '网络问题，请稍后重试！',
             };
 
             this.updateStateWithDataSource(
               dataSourceKey,
               defaultBindingDatas,
-              null,
+              (err.response || {}).data,
               { __loading: false, __error }
             );
 
@@ -222,11 +227,6 @@ export default function dataBinder(sourceConfig, opts = {}) {
             }
           })
           .then((res) => {
-            if (!res) {
-              // 接口报错
-              return;
-            }
-
             const responseHandler = (responseData, originResponse) => {
               if (!responseData.data) {
                 // eslint-disable-next-line no-console
@@ -238,11 +238,12 @@ export default function dataBinder(sourceConfig, opts = {}) {
 
               // eslint-disable-next-line
               let __error = null;
+
               // 兼容 status: "SUCCESS" 和 success: true 的情况
               if (responseData.status === 'SUCCESS' || responseData.success) {
                 const defaultCallback = () => {
                   if (responseData.message) {
-                    Message.success(responseData.message);
+                    Toast.success(responseData.message);
                   }
                 };
 
@@ -260,12 +261,11 @@ export default function dataBinder(sourceConfig, opts = {}) {
 
                 const defaultCallback = () => {
                   if (responseData.message) {
-                    Message.error(responseData.message);
+                    Toast.error(responseData.message);
                   }
                 };
 
                 // 这里的 success 是请求成功的意思，并不表示业务逻辑执行成功
-                // TODO: 设计上不太合理，应该触发 customError 然后通过参数区分网络错误还是状态码错误
                 if (customSuccess) {
                   customSuccess(responseData, defaultCallback, originResponse);
                 } else {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Loading } from '@alifd/next';
+import { Loading } from '@icedesign/base';
 
 export default class Container extends Component {
   static displayName = 'Container';
@@ -125,6 +125,7 @@ export default class Container extends Component {
     if (loading) {
       return (
         <Loading
+          shape="fusion-reactor"
           color="#66AAFF"
           style={{ width: '100%' }}
         >
