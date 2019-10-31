@@ -65,7 +65,10 @@ function getSubMenuOrItem(item, index) {
     return null;
   }
   const navItem = (
-    <NavItem key={item.path}>
+    <NavItem
+      key={item.path}
+      icon={item.icon ? <FoundationSymbol type={item.icon} size="small" /> : null}
+    >
       <Link to={item.path}>
         <FormattedMessage id={getLocaleKey(item)} />
       </Link>
